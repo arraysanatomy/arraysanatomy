@@ -1,4 +1,5 @@
 # caffiend
+
 MEAN stack project on beverage review
 
 Project Name
@@ -18,7 +19,7 @@ Summary:
 Discovering the best cup of coffee or tea is difficult. We aggregate user data to make it easy. 
 _________________________
 
-Problem:
+Problem:-
 
 There are 100s of cafes and thousands of coffees/teas in a given city, making it difficult what to decide to get at  a cafe. 
 _________________________
@@ -46,3 +47,8 @@ _________________________
 Closing and Call to Action:
 
 Stop wasting your time hunting for the best caffeine. We’ve already found it. Come see for yourself.
+
+MEAN stack project on beverage revie...i
+
+
+update readme and possibly cause conflict
