@@ -1,3 +1,5 @@
+'use strict';
+
 var bodyParser = require('body-parser');
 
 module.exports = function (app, express){
@@ -11,4 +13,4 @@ module.exports = function (app, express){
 
   // TODO: build home router
   // require('../home/HomeRoutes.js')(homeRouter);
-}
+};
