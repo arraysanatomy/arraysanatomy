@@ -23,7 +23,13 @@ app.controller('landingController',function($scope,
 
   $scope.getResults = function() {
 
-    landingFactory.getResults()
+    landingFactory.getResults($scope.searchBoxModel)
+      .then(function(data) {
+        $window.localStorage.setItem('servedCafeName',data);
+        $location.path('/results');
+      })
+      .catch(function(error){
+        console.error(error)
+      });
   }
-
-})
+});
