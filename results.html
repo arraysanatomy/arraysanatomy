@@ -2,6 +2,28 @@
   <h2>{{cafename}}</h2>
   <h3>Menu:</h3>
   <ul>
-
+    <li ng-repeat="menuItem in menu">
+      Name: {{menu.name}} Rating: {{menu.rating}}
+    </li>
   </ul>
 </div>
+
+
+<!--  var m = [
+    {"Name": "a", rating: 3},
+{"Name": "tea", rating: 4},
+{"Name": "milk", rating: 5},
+{"Name": "juice", rating: 6},
+
+];
+
+function MyCtrl($scope) {
+    $scope.items = m;
+
+    <h3>FIFA Mactch Summary:</h3>
+<div ng-app ng-controller="MyCtrl">
+    <ul>
+        <li ng-repeat="object in items">Name: {{object.Name}} Rating: {{object.rating}}</li>
+    </ul>
+</div>
+}-->
