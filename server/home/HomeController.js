@@ -3,7 +3,7 @@ var db = require('../db/db');
 module.exports = {
 	search: function(req, res) {
 		console.log("req.data: ", req.body);
-		var cafe = req.body ? req.body.data.cafe.toLowerCase() : null;
+		var cafe = req.body ? req.body.cafe.toLowerCase() : null;
 		if (cafe) {
 			var results = db[cafe];
 			if (results) {
