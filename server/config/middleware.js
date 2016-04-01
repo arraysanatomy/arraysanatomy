@@ -12,5 +12,5 @@ module.exports = function (app, express){
   app.use('/api/router', homeRouter);
 
   // TODO: build home router
-  // require('../home/HomeRoutes.js')(homeRouter);
+  require('../home/HomeRoutes.js')(homeRouter);
 };
