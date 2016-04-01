@@ -1,5 +1,5 @@
 module.exports = {
-  'Starbucks': {
+  'starbucks': {
     'name': 'Starbucks',
     'address': '215 Mission St.',
     'phone': '(123) 456-7890',
@@ -27,7 +27,7 @@ module.exports = {
     ]
   },
 
-  'Blue Bottle Coffee': {
+  'blue bottle coffee': {
     'name': 'Blue Bottle Coffee',
     'address': '115 Sansome Street San Francisco, CA 94104',
     'phone': '(510) 653-3394',
@@ -55,7 +55,7 @@ module.exports = {
     ]
   },
 
-  'Philz Coffee': {
+  'philz coffee': {
     'name': 'Philz Coffee',
     'address': '5 Embarcadero Center San Francisco, CA 94111',
     'phone': '(415) 321-1499',
@@ -83,7 +83,7 @@ module.exports = {
     ]
   },
 
-  'Brew Bro Cafe': {
+  'brew bro cafe': {
     'name': 'Brew Bro Cafe',
     'address': '1299 Pacific Ave, San Francisco, CA 94109',
     'phone': '(415) 665-9102',
@@ -111,7 +111,7 @@ module.exports = {
     ]
   },
 
-  'Home': {
+  'home': {
     'name': 'Home',
     'address': '1222 Noriega St San Francisco, CA 94122',
     'phone': '(415) 665-9102',
@@ -139,7 +139,7 @@ module.exports = {
     ]
   },
 
-  'McDonald’s': {
+  'mcdonald’s': {
     'name': 'McDonald’s',
     'address': '441 Sutter St San Francisco, CA 94108',
     'phone': '(415) 362-1082',
