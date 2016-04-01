@@ -25,7 +25,7 @@ app.controller('landingController',function($scope,
 
     landingFactory.getResults($scope.searchBoxModel)
       .then(function(data) {
-        $window.localStorage.setItem('servedCafeName',data);
+        $window.localStorage.setItem('servedCafeObject',data);
         $location.path('/results');
       })
       .catch(function(error){
