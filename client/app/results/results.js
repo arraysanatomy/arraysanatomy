@@ -13,6 +13,7 @@ app.controller('resultsController',function($scope, resultsFactory){
   $scope.cafename = cafe.name;
   $scope.rating = cafe.menu.rating;
   $scope.menuItem = cafe.menu.name;
+  $scope.menu = cafe.menu;
 
 
 });
