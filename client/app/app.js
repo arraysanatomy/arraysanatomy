@@ -1,4 +1,8 @@
-var app = angular.module('mainApp', ['ngroute']);
+var app = angular.module('mainApp', [
+   'ngroute',
+   'mainApp.results',
+   'mainApp.landing'
+   ]);
 
 app.config(function($routeProvider,$httpProvider){
 
