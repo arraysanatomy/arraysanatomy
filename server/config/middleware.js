@@ -9,7 +9,7 @@ module.exports = function (app, express){
   app.use(bodyParser.json());
 
   app.use(express.static(__dirname + '/../../client'));
-  app.use('/api/router', homeRouter);
+  app.use('/home', homeRouter);
 
   // TODO: build home router
   require('../home/HomeRoutes.js')(homeRouter);
