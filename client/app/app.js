@@ -10,7 +10,7 @@ app.config(function($routeProvider,$httpProvider){
 
     .when('/', {
       templateUrl: '/app/landing/landing.html',
-      controller: 'landingController';
+      controller: 'landingController'
     })
     
     .when('/results', {
