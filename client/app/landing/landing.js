@@ -5,8 +5,8 @@ app.factory('landingFactory',function($http) {
     var getResults = function(cafeName){
       return $http({
         method: 'POST',
-        url: '/results',
-        data: cafeName
+        url: '/home/search',
+        data: {cafe: cafeName}
       })
       .then(function(response) {
         return response.data;
