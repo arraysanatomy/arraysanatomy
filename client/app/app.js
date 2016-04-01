@@ -1,5 +1,5 @@
 var app = angular.module('mainApp', [
-   'ngroute',
+   'ngRoute',
    'mainApp.results',
    'mainApp.landing'
    ]);

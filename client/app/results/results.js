@@ -1,13 +1,13 @@
 var app = angular.module('mainApp.results',[]);
 
-app.factory('resultsFactory',function($http){
+// app.factory('resultsFactory',function($http){
 
 
 
-  return {  };
-});
+//   return {  };
+// });
 
-app.controller('resultsController',function($scope, resultsFactory){
+app.controller('resultsController',function($scope){
 
   var cafe = localStorage.getItem('servedCafeObject');
   $scope.cafename = cafe.name;
