@@ -1,13 +1,18 @@
 <!doctype html>
-<html>
+<html ng-app='mainApp'>
   <head>
     <title>Caffiend</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.13/router.js"></script>
   </head>
-  <body ng-app='mainApp'>
+  <body>
     <h1>Caffiend</h1>
+    <div ng-view></div>
+
     <h3>Type in a Cafe</h3>
     <input type='text' id='searchbox' ng-model='searchBoxModel'/>
     <button id='searchButton' type='button' ng-click='sendSearch()'>Search</button>
+
+
   </body>
 </html>
