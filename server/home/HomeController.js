@@ -10,4 +10,7 @@ module.exports = {
 			res.sendStatus(400);
 		}
 	}
+  addMenuItem: function(req, res){
+    
+  }
 }
