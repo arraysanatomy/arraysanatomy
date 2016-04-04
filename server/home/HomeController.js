@@ -10,7 +10,17 @@ module.exports = {
 			res.sendStatus(400);
 		}
 	}
+  //used on POST to api/items/add
   addMenuItem: function(req, res){
-    
+    var menuItem = req.body? req.body.menuItem.toLowerCase() : null;
+    //TODO: how to determine which cafe to add new menu item to
+
+    //TODO: CHECK DB IF THIS ALREADY EXISTS
+    /*if(JSON.parse(menuItem).rating && JSON.parse(menuItem).name){
+      res.status(200).send();
+    }
+    else{
+      res.sendStatus(400).send("Must include a rating and name!")
+    } */
   }
 }
