@@ -139,7 +139,7 @@ module.exports = {
     ]
   },
 
-  'mcdonald’s': {
+  'mcdonald\'s': {
     'name': 'McDonald’s',
     'address': '441 Sutter St San Francisco, CA 94108',
     'phone': '(415) 362-1082',
