@@ -1,6 +1,6 @@
 var app = angular.module('mainApp.landing',[]);
 
-app.factory('landingFactory',function($http) {
+app.factory('landingFactory',function($http, $location) {
 
     var getResults = function(cafeName){
       console.log(cafeName);
@@ -11,9 +11,12 @@ app.factory('landingFactory',function($http) {
         url: '/home/search',
         data: newData
       })
-      .then(function(response) {
+      .then(function successCallback(response) {
         return response.data;
+      }, function errorCallback(response){
+        reject(response);
       });
+      
   };
 
   return {
@@ -27,13 +30,16 @@ app.controller('landingController',function($scope,
   $scope.getResults = function() {
 
     landingFactory.getResults($scope.searchBoxModel)
-      .then(function(data) {
+      .then(function (data) {
+        // if successfull callback
         console.log('data inside landing.js:', data);
         $window.localStorage.setItem('servedCafeObject', JSON.stringify(data));
         $location.path('/results');
       })
-      .catch(function(error){
-        console.error(error)
+      .catch(function (response){
+        // still inside model 
+        // alert($scope.searchBoxModel);
+        $location.path('/addCafe/id/' + $scope.searchBoxModel);
       });
   }
 });
