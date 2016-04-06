@@ -3,7 +3,6 @@ var app = angular.module('mainApp.landing',[]);
 app.factory('landingFactory',function($http, $location) {
 
     var getResults = function(cafeName){
-      console.log(cafeName);
       var newData = {};
       newData.cafe = cafeName;
       return $http({

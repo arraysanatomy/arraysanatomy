@@ -1,7 +1,7 @@
 var app = angular.module('mainApp.addCafe', []);
 
 app.controller('addCafeController', function($scope, 
-  $location, $window){
+  $location, $window, addCafeFactory){
 
   $scope.getInput = function(){
     var url = window.location.hash;
@@ -9,10 +9,38 @@ app.controller('addCafeController', function($scope,
     var cafeName = arr[arr.length - 1];
     $scope.cafe = cafeName;
   }
-  
+
+  $scope.addCafe = function(){
+    addCafeFactory.addCafe($scope.cafe)
+      .then(function(data){
+        // TODO require to test add cafe name here. waiting for server.
+        $window.localStorage.setItem('servedCafeObject', JSON.stringify(data));
+        $location.path('/results');
+      });
+  }
+
   $scope.getInput();
 });
 
 app.factory('addCafeFactory', function($http){
 
+  var addCafe = function(newCafe){
+    var data = new Object();
+    data.cafe = newCafe;
+
+    return $http({
+      method: 'POST',
+      url: '/api/cafe/add',
+      data: data
+    })
+    .then(function successCallback(response){
+      return response.data;
+    }, function errorCallback(response){
+      return response;
+    });
+  }
+
+  return {
+    addCafe: addCafe
+  }
 });
