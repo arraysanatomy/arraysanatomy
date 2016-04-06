@@ -42,8 +42,11 @@ function DBQuery(menuItemObj){
 
 // takes a string
 function addCafe(cafeName, cb){
-	console.log("cafeName is: ", cafeName);
+	console.log("cafeName inside addCafe is: ", cafeName);
 	db.run("INSERT INTO cafes(name) VALUES(?)", [cafeName], function(err){
+		  if(err){
+		  	console.log('error inside addcafe: ', err);
+		  }
 		  if(cb){
   			 cb();
   		}
@@ -91,24 +94,36 @@ function doesCafeMenuItemExist(menuItemObj, cb){
 	})
 };
 
-addCafe("testCafe", function(){});
+//addCafe("testCafe", function(){});
 
-var menuItemObj = {
-  name: "starpoo",
-  menuItem: {
-  	name: "coffee",
-  	rating: 5
-  }
+// var menuItemObj = {
+//   name: "starpoo",
+//   menuItem: {
+//   	name: "coffee",
+//   	rating: 5
+//   }
+// }
+
+// DBQuery(menuItemObj);
+// addCafeMenuItem(menuItemObj, function(){});
+// doesCafeExist('stlolololololarpoo', function(row){
+// 	console.log('this is the row inside invocation', row);
+// });
+// doesCafeMenuItemExist(menuItemObj, function(row){
+// 	console.log('we are invocating now', row);
+// });
+//db.close();
+
+// module.exports = db;
+
+
+
+
+module.exports = {
+	db: db,
+	DBQuery: DBQuery,
+	addCafe: addCafe,
+	addCafeMenuItem: addCafeMenuItem,
+	doesCafeExist: doesCafeExist,
+	doesCafeMenuItemExist: doesCafeMenuItemExist
 }
-
-DBQuery(menuItemObj);
-addCafeMenuItem(menuItemObj, function(){});
-doesCafeExist('stlolololololarpoo', function(row){
-	console.log('this is the row inside invocation', row);
-});
-doesCafeMenuItemExist(menuItemObj, function(row){
-	console.log('we are invocating now', row);
-});
-db.close();
-
-module.exports = db;

@@ -10,5 +10,6 @@ module.exports = function (app, express){
   app.use(express.static(__dirname + '/../../client'));
   app.use('/home', homeRouter);
 
+
   require('../home/HomeRoutes.js')(homeRouter);
 };
