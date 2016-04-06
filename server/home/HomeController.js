@@ -19,21 +19,26 @@ module.exports = {
     //   dbadd(menuItem);
     //   res.status(200).send(dbquery(menuItem.name));
     // }
-    else{
-        res.sendStatus(400);
-    }
+    // else{
+    //     res.sendStatus(400);
+    // }
 
-    //TODO: CHECK DB IF THIS ALREADY EXISTS
-    /*if(JSON.parse(menuItem).rating && JSON.parse(menuItem).name){
-      res.status(200).send();
-    }
-    else{
-      res.sendStatus(400).send("Must include a rating and name!")
-    } */
+
   }
 
   addCafe: function(req, res){
     var newCafe = req.body ? req.body.cafe.toLowerCase() : null;
+    // if(newCafe){
+    //   //check that it doesn't already exist
+    //     if(dbDoesExist(newCafe.name)){
+    //       //if it does
+    //       res.status(400).send('this cafe already exists');
+    //     }
+    //     else{
+    //       dbAddCafe(newCafe);
+    //       res.status(200).send(dbGetCafe(newCafe.name));
+    //     }
+    // }
     //TODO: handle adding this to a real DB
   }
 }
