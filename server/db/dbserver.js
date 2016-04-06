@@ -37,10 +37,8 @@ if(!exists) {
         addCafeMenuItem(_item);
       });
     })
-
 	});
 }
-
 
 function DBQuery(menuItemObj){
 	var name = menuItemObj.name;
@@ -70,7 +68,6 @@ function addCafeMenuItem(menuItemObj, cb){
   		}
   	});
   });
-
 };
 
 function doesCafeExist(cafeName, cb){
