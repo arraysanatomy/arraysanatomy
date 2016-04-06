@@ -1,3 +1,4 @@
+var db = require('../db/dbserver')
 var bodyParser = require('body-parser');
 
 module.exports = function (app, express){
