@@ -34,15 +34,11 @@ if(!exists) {
 
 function DBQuery(menuItemObj){
 	var name = menuItemObj.name;
-	console.log("name is: ", name);
-	db.get("SELECT ID FROM cafes WHERE name = ?", [name], function(err, row){
-		console.log("row is: ", row);
-	});
+	db.get("SELECT ID FROM cafes WHERE name = ?", [name], function(err, row){});
 }
 
 // takes a string
 function addCafe(cafeName, cb){
-	console.log("cafeName inside addCafe is: ", cafeName);
 	db.run("INSERT INTO cafes(name) VALUES(?)", [cafeName], function(err){
 		  if(err){
 		  	console.log('error inside addcafe: ', err);
@@ -54,17 +50,11 @@ function addCafe(cafeName, cb){
 };
 
 function addCafeMenuItem(menuItemObj, cb){
-	// doesCafeMenuItemExist()
 	var cafeName = menuItemObj.name;
 	var menuItemName = menuItemObj.menuItem.name;
 	var rating = menuItemObj.menuItem.rating;
-
-	console.log("cafeName: " + cafeName + "menuItemName: " + menuItemName + "rating: " + rating);
-
   db.get("SELECT ID FROM cafes WHERE name = ?", [cafeName], function(err, row){
-  	console.log("row is: ", row);
   	db.run("INSERT INTO menu(item, rating, cafeID) VALUES(?, ?, ?)", [menuItemName, rating, row.ID], function(err){
-  		console.log("error is: ", err);
   		if(cb){
   			 cb();
   		}
@@ -75,7 +65,6 @@ function addCafeMenuItem(menuItemObj, cb){
 
 function doesCafeExist(cafeName, cb){
 	db.get("SELECT name FROM cafes WHERE name = ?", [cafeName], function(err, row){
-		console.log("ROW is: ", row);
 		if(cb){
 			cb(row);
 		}
@@ -85,7 +74,6 @@ function doesCafeExist(cafeName, cb){
 function doesCafeMenuItemExist(menuItemObj, cb){
   
 	db.get("SELECT ID FROM cafes WHERE name = ?", [menuItemObj.name], function(err, row){
-		console.log("row in doesCafeMenuItemExist is: ", row);
 		  db.get("SELECT item FROM menu WHERE item = ? AND cafeID = ?", [menuItemObj.menuItem.name, row.ID], function(err, row){
 		  	if(cb){
 		  		cb(row);
@@ -93,31 +81,6 @@ function doesCafeMenuItemExist(menuItemObj, cb){
 		  });
 	})
 };
-
-//addCafe("testCafe", function(){});
-
-// var menuItemObj = {
-//   name: "starpoo",
-//   menuItem: {
-//   	name: "coffee",
-//   	rating: 5
-//   }
-// }
-
-// DBQuery(menuItemObj);
-// addCafeMenuItem(menuItemObj, function(){});
-// doesCafeExist('stlolololololarpoo', function(row){
-// 	console.log('this is the row inside invocation', row);
-// });
-// doesCafeMenuItemExist(menuItemObj, function(row){
-// 	console.log('we are invocating now', row);
-// });
-//db.close();
-
-// module.exports = db;
-
-
-
 
 module.exports = {
 	db: db,
