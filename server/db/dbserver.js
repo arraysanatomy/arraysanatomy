@@ -20,7 +20,7 @@ if(!exists) {
 			db.run("CREATE TABLE menu \
 				(ID INT PRIMARY KEY NOT NULL, \
 					item VARCHAR(15), \
-					rating VARCHAR(5), \
+					rating REAL(1), \
 			    cafeID INTEGER(10), \
 			    FOREIGN KEY(cafeID) REFERENCES cafes(ID) \
         )");
@@ -31,6 +31,53 @@ if(!exists) {
 	});
 }
 
+
+function DBQuery(menuItemObj){
+	var name = menuItemObj.name;
+	db.get("SELECT ID FROM cafes WHERE name = ?", name, function(err, row){
+		console.log("row is: ", row);
+	});
+}
+
+// takes a string
+function addCafe(cafeName){
+	db.run("INSERT INTO cafes(name) VALUES(?)", cafeName);
+};
+
+function addCafeMenuItem(menuItemObj, cb){
+	// doesCafeMenuItemExist()
+	var cafeName = menuItemObj.name;
+	var menuItemName = menuItemObj.menuItem.name;
+	var rating = menuItemObj.menuItem.rating;
+
+  db.get("SELECT ID FROM cafes WHERE name = ?", cafeName, function(err, row){
+  	console.log("row is: ", row);
+  	db.run("INSERT INTO menu(item, rating, cafeID) VALUES(?, ?, ?)", [menuItemName, rating, row.id], function(err){
+  		console.log("error is: ", err);
+  		cb();
+  	});
+  });
+  
+};
+
+// function doesCafeExist(cafeName){
+
+// };
+// function doesCafeMenuItemExist(menuItemObj){
+
+// };
+
+addCafe("testCafe");
+
+var menuItemObj = {
+  name: "starpoo",
+  menuItem: {
+  	name: "coffee",
+  	rating: 5
+  }
+}
+
+DBQuery(menuItemObj);
 
 
 db.close();
