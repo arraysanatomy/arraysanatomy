@@ -34,14 +34,20 @@ if(!exists) {
 
 function DBQuery(menuItemObj){
 	var name = menuItemObj.name;
+	console.log("name is: ", name);
 	db.get("SELECT ID FROM cafes WHERE name = ?", [name], function(err, row){
 		console.log("row is: ", row);
 	});
 }
 
 // takes a string
-function addCafe(cafeName){
-	db.run("INSERT INTO cafes(name) VALUES(?)", cafeName);
+function addCafe(cafeName, cb){
+	console.log("cafeName is: ", cafeName);
+	db.run("INSERT INTO cafes(name) VALUES(?)", [cafeName], function(err){
+		  if(cb){
+  			 cb();
+  		}
+	});
 };
 
 function addCafeMenuItem(menuItemObj, cb){
@@ -50,11 +56,15 @@ function addCafeMenuItem(menuItemObj, cb){
 	var menuItemName = menuItemObj.menuItem.name;
 	var rating = menuItemObj.menuItem.rating;
 
+	console.log("cafeName: " + cafeName + "menuItemName: " + menuItemName + "rating: " + rating);
+
   db.get("SELECT ID FROM cafes WHERE name = ?", [cafeName], function(err, row){
   	console.log("row is: ", row);
   	db.run("INSERT INTO menu(item, rating, cafeID) VALUES(?, ?, ?)", [menuItemName, rating, row.ID], function(err){
   		console.log("error is: ", err);
-  		cb();
+  		if(cb){
+  			 cb();
+  		}
   	});
   });
 
@@ -67,7 +77,7 @@ function addCafeMenuItem(menuItemObj, cb){
 
 // };
 
-addCafe("testCafe");
+addCafe("testCafe", function(){});
 
 var menuItemObj = {
   name: "starpoo",
@@ -78,7 +88,7 @@ var menuItemObj = {
 }
 
 DBQuery(menuItemObj);
-
+addCafeMenuItem(menuItemObj, function(){});
 
 db.close();
 
