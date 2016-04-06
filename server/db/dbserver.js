@@ -70,12 +70,26 @@ function addCafeMenuItem(menuItemObj, cb){
 
 };
 
-// function doesCafeExist(cafeName){
+function doesCafeExist(cafeName, cb){
+	db.get("SELECT name FROM cafes WHERE name = ?", [cafeName], function(err, row){
+		console.log("ROW is: ", row);
+		if(cb){
+			cb(row);
+		}
+	});
+};
 
-// };
-// function doesCafeMenuItemExist(menuItemObj){
-
-// };
+function doesCafeMenuItemExist(menuItemObj, cb){
+  
+	db.get("SELECT ID FROM cafes WHERE name = ?", [menuItemObj.name], function(err, row){
+		console.log("row in doesCafeMenuItemExist is: ", row);
+		  db.get("SELECT item FROM menu WHERE item = ? AND cafeID = ?", [menuItemObj.menuItem.name, row.ID], function(err, row){
+		  	if(cb){
+		  		cb(row);
+		  	}
+		  });
+	})
+};
 
 addCafe("testCafe", function(){});
 
@@ -89,7 +103,12 @@ var menuItemObj = {
 
 DBQuery(menuItemObj);
 addCafeMenuItem(menuItemObj, function(){});
-
+doesCafeExist('stlolololololarpoo', function(row){
+	console.log('this is the row inside invocation', row);
+});
+doesCafeMenuItemExist(menuItemObj, function(row){
+	console.log('we are invocating now', row);
+});
 db.close();
 
 module.exports = db;
