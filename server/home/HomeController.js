@@ -15,6 +15,13 @@ module.exports = {
   addMenuItem: function(req, res){
     var menuItem = req.body ? req.body.menuItem.toLowerCase() : null;
     //TODO: how to determine which cafe to add new menu item to
+    // if(dbquery(menuItem.name)){
+    //   dbadd(menuItem);
+    //   res.status(200).send(dbquery(menuItem.name));
+    // }
+    else{
+        res.sendStatus(400);
+    }
 
     //TODO: CHECK DB IF THIS ALREADY EXISTS
     /*if(JSON.parse(menuItem).rating && JSON.parse(menuItem).name){
