@@ -3,7 +3,6 @@ var fs = require('fs');
 var file = "./server/db/cafe.db";
 var db = new sqlite3.Database(file);
 var exists = fs.existsSync(file);
-
 var _ = require('underscore');
 var data = require('./db');
 
