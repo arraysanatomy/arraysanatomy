@@ -11,14 +11,14 @@ if(!exists) {
 	db.serialize(function(){
 		 // db.run("PRAGMA foreign_keys = ON");
 			db.run("CREATE TABLE cafes \
-				(ID INT PRIMARY KEY NOT NULL, \
-				 name VARCHAR(15) NOT NULL, \
-				 address VARCHAR(25) NOT NULL, \
-				 phone VARCHAR(14) NOT NULL \
+				(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
+				 name VARCHAR(15), \
+				 address VARCHAR(25), \
+				 phone VARCHAR(14) \
 				)");
 			
 			db.run("CREATE TABLE menu \
-				(ID INT PRIMARY KEY NOT NULL, \
+				(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
 					item VARCHAR(15), \
 					rating REAL(1), \
 			    cafeID INTEGER(10), \
@@ -34,7 +34,7 @@ if(!exists) {
 
 function DBQuery(menuItemObj){
 	var name = menuItemObj.name;
-	db.get("SELECT ID FROM cafes WHERE name = ?", name, function(err, row){
+	db.get("SELECT ID FROM cafes WHERE name = ?", [name], function(err, row){
 		console.log("row is: ", row);
 	});
 }
@@ -50,14 +50,14 @@ function addCafeMenuItem(menuItemObj, cb){
 	var menuItemName = menuItemObj.menuItem.name;
 	var rating = menuItemObj.menuItem.rating;
 
-  db.get("SELECT ID FROM cafes WHERE name = ?", cafeName, function(err, row){
+  db.get("SELECT ID FROM cafes WHERE name = ?", [cafeName], function(err, row){
   	console.log("row is: ", row);
-  	db.run("INSERT INTO menu(item, rating, cafeID) VALUES(?, ?, ?)", [menuItemName, rating, row.id], function(err){
+  	db.run("INSERT INTO menu(item, rating, cafeID) VALUES(?, ?, ?)", [menuItemName, rating, row.ID], function(err){
   		console.log("error is: ", err);
   		cb();
   	});
   });
-  
+
 };
 
 // function doesCafeExist(cafeName){
