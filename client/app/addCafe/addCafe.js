@@ -8,7 +8,7 @@ app.controller('addCafeController', function($scope,
     var arr = url.split('/'); 
     var cafeName = arr[arr.length - 1];
     $scope.cafe = cafeName;
-  }
+  };
 
   $scope.addCafe = function(){
     addCafeFactory.addCafe($scope.cafe)
@@ -17,7 +17,7 @@ app.controller('addCafeController', function($scope,
         $window.localStorage.setItem('servedCafeObject', JSON.stringify(data));
         $location.path('/results');
       });
-  }
+  };
 
   $scope.getInput();
 });
@@ -25,7 +25,7 @@ app.controller('addCafeController', function($scope,
 app.factory('addCafeFactory', function($http){
 
   var addCafe = function(newCafe){
-    var data = new Object();
+    var data = {};
     data.cafe = newCafe;
 
     return $http({
@@ -38,9 +38,9 @@ app.factory('addCafeFactory', function($http){
     }, function errorCallback(response){
       return response;
     });
-  }
+  };
 
   return {
     addCafe: addCafe
-  }
+  };
 });

@@ -20,12 +20,14 @@
   "dependencies": {
     "angular": "^1.5.3",
     "body-parser": "^1.15.0",
+    "bower": "^1.7.9",
     "express": "^4.13.4",
     "jshint": "^2.9.1",
     "node": "0.0.0"
   },
   "devDependencies": {
     "grunt": "^1.0.0",
-    "grunt-contrib-jshint": "^1.0.0"
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-nodemon": "^0.4.1"
   }
 }

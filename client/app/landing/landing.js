@@ -20,8 +20,8 @@ app.factory('landingFactory',function($http, $location) {
 
   return {
     getResults:getResults
-  }
-})
+  };
+});
 
 app.controller('landingController',function($scope,
  $window, $location, landingFactory){
@@ -40,5 +40,5 @@ app.controller('landingController',function($scope,
         // alert($scope.searchBoxModel);
         $location.path('/addCafe/id/' + $scope.searchBoxModel);
       });
-  }
+  };
 });

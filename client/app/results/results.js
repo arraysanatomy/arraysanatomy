@@ -17,13 +17,13 @@ app.controller('resultsController',function($scope, $uibModal){
       resolve: {
 
       }
-    })
-  }
+    });
+  };
   $scope.toggleAnimation = function() {
     $scope.animationsEnabled = !$scope.animationsEnabled;
-  }
+  };
 });
 
 app.controller('modalController',function($scope,$uibModalInstance){
   // TODO implement the modalController logics.
-})
+});

@@ -26,6 +26,6 @@ app.config(function($routeProvider,$httpProvider){
     })
     .otherwise({
       redirectTo: '/'
-    })
+    });
 });
 
