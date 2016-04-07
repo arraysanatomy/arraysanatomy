@@ -2,13 +2,14 @@
 <html ng-app="mainApp">
   <head>
     <title>Caffiend</title>
+    <!-- Vendor Libraries -->
     <script src="app/lib/angular/angular.js"></script> 
     <script src="app/lib/angular-route/angular-route.js"></script>
     <script src="app/lib/jquery/dist/jquery.js"></script>
     <script src="app/lib/bootstrap/js/bootstrap.js"></script>
     <script src="app/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
-
+    <!-- Application Files -->
     <script src="app/landing/landing.js"></script>
     <script src="app/results/results.js"></script>
     <script src="app/addCafe/addCafe.js"></script>
@@ -18,7 +19,9 @@
     <link rel="stylesheet" type="text/css" href="app/lib/bootstrap/dist/css/bootstrap.css"></link>
   </head>
   <body>
+    <div class='container'>
     <h1>Caffiend</h1>
+    </div>
     <div ng-view></div>
   </body>
 </html>
