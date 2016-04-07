@@ -13,3 +13,20 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+#company-title {
+  text-align: center;
+  color: #5E2612;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+#landing {
+  text-align: center;
+}
+
+#landing h3 {
+  color: #AEEEEE;
+  font-size: 25px;
+  font-weight: bold;
+}
