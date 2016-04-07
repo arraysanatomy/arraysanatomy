@@ -6,10 +6,7 @@ var exists = fs.existsSync(file);
 
 if(!exists) {
 	console.log("Creating DB file.");
-	// fs.openSync('./server/db/' + file, 'w');
-	// fs.openSync(file, 'w');
 	db.serialize(function(){
-		 // db.run("PRAGMA foreign_keys = ON");
 			db.run("CREATE TABLE cafes \
 				(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
 				 name VARCHAR(15), \
@@ -24,10 +21,6 @@ if(!exists) {
 			    cafeID INTEGER(10), \
 			    FOREIGN KEY(cafeID) REFERENCES cafes(ID) \
         )");
-		
-		
-		//var stmt = db.prepare("INSERT INTO cafes VALUES (?) ")
-
 	});
 }
 
@@ -98,7 +91,7 @@ function getCafe(cafeName, cb){
 	});
 };
 
-
+	// TODO: add this to mocha/chai 
   // testing that functions work - later for mocha/chai
   // var testObj = {
   // 	name: "testingThis",
