@@ -12,7 +12,7 @@ app.controller('resultsController',function($scope, $uibModal){
   $scope.phone = cafe.phone;
 
   $scope.menu = cafe.menu;
-  
+
   $scope.animationsEnabled = true;
   $scope.open = function(){
 
@@ -31,7 +31,7 @@ app.controller('resultsController',function($scope, $uibModal){
 });
 
 app.controller('modalController',function($scope,$uibModalInstance, addDrinkFactory){
-  
+
   $scope.errorMessage = '';
 
   $scope.add = function(){
@@ -41,7 +41,7 @@ app.controller('modalController',function($scope,$uibModalInstance, addDrinkFact
       }
       else{
         //TODO: demonstrate error to user
-        $scope.errorMessage = 'Server too fucked up. Check back later!'
+        $scope.errorMessage = 'Server error. Check back later!'
       }
     });
   };
@@ -64,7 +64,7 @@ app.factory('addDrinkFactory',function($http, $location) {
         return response.data;
       }, function errorCallback(response){
         reject(response);
-      }); 
+      });
   };
   return {
     addDrink: addDrink

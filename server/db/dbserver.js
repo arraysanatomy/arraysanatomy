@@ -32,7 +32,7 @@ function DBQuery(menuItemObj){
 
 // takes a string
 function addCafe(cafeName, cb){
-	db.run("INSERT INTO cafes(name) VALUES(?)", [cafeName], function(err){
+  db.run("INSERT INTO cafes(name) VALUES(?)", [cafeName], function(err){
 		  if(err){
 		  	console.log('error inside addcafe: ', err);
 		  }
@@ -59,7 +59,7 @@ function addCafeMenuItem(menuItemObj, cb){
 function doesCafeExist(cafeName, cb){
 	db.get("SELECT name FROM cafes WHERE name = ?", [cafeName], function(err, row){
 		if(cb){
-			cb(!!(row));
+      cb(!!(row));
 		}
 	});
 };
@@ -77,7 +77,7 @@ function doesCafeMenuItemExist(menuItemObj, cb){
 
 function getCafe(cafeName, cb){
 	db.get("SELECT * FROM cafes WHERE name = ?", [cafeName], function(err, row){
-		var cafe = row;
+    var cafe = row;
 		var menu = [];
 
 		db.each("SELECT * FROM menu WHERE cafeID = ?", [cafe.ID], function(err, row){

@@ -32,7 +32,6 @@ app.controller('landingController',function($scope,
     landingFactory.getResults($scope.searchBoxModel)
       .then(function (data) {
         // if successfull callback
-        console.log('data inside landing.js:', data);
         $window.localStorage.setItem('servedCafeObject', JSON.stringify(data));
         $location.path('/results');
       })
