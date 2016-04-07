@@ -1,9 +1,10 @@
-var db = require('../db/db');
+var db = require('../db/dbserver.js');
 
 module.exports = {
 	search: function(req, res) {
 		var cafe = req.body ? req.body.cafe.toLowerCase() : null;
     //TODO: change this to handle using a DB instead
+
     if (cafe && db[cafe]) {
 				res.status(200).send(JSON.stringify(db[cafe]));
 		}
