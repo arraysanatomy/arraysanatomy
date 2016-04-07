@@ -69,7 +69,7 @@ function doesCafeMenuItemExist(menuItemObj, cb){
 	db.get("SELECT ID FROM cafes WHERE name = ?", [menuItemObj.name], function(err, row){
 		  db.get("SELECT item FROM menu WHERE item = ? AND cafeID = ?", [menuItemObj.menuItem.name, row.ID], function(err, row){
 		  	if(cb){
-		  		cb(row);
+		  		cb(!!(row));
 		  	}
 		  });
 	})
