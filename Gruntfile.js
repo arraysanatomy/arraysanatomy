@@ -20,24 +20,41 @@ module.exports = function(grunt) {
         script: 'index.js'
       }
     },
+    watch: {
+      scripts: {
+        files: ['server/**/*.js', 'client/**/*.js', 'Gruntfile.js', '!**/node_modules/**'],
+        tasks: ['jshint'],
+        options: {
+          spawn: false
+        }
+      }
+    }
   });
 
   // Required library 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
   
+  grunt.registerTask('server-dev', function (target) {
+    // Running nodejs in a different process and displaying output on the main console
+    var nodemon = grunt.util.spawn({
+         cmd: 'grunt',
+         grunt: true,
+         args: 'nodemon'
+    });
+    nodemon.stdout.pipe(process.stdout);
+    nodemon.stderr.pipe(process.stderr);
+
+    grunt.task.run([ 'watch' ]);
+  });
+
   // Tasks
   grunt.registerTask('test', ['jshint']);
 
-  grunt.registerTask('nodemon-dev', function (target) {
-    var nodemon = grunt.util.spawn({
-      cmd: 'grunt',
-      grunt: true,
-      args: 'nodemon'
-    });
-  });
-
   grunt.registerTask('deploy', [
     'test',
-    'nodemon-dev']);
+    'server-dev']);
 };
+
+
