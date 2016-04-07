@@ -1,7 +1,7 @@
 module.exports = {
   'starbucks': {
     'name': 'Starbucks',
-    'address': '215 Mission St.',
+    'address': '215 Mission St. San Francisco, CA, 94104',
     'phone': '(123) 456-7890',
     'menu': [
       {

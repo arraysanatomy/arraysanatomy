@@ -5,6 +5,12 @@ app.controller('resultsController',function($scope, $uibModal){
   var cafe = localStorage.getItem('servedCafeObject');
   cafe = JSON.parse(cafe);
 
+  $scope.cafeName = cafe.name;
+
+  $scope.address = cafe.address;
+
+  $scope.phone = cafe.phone;
+
   $scope.menu = cafe.menu;
   
   $scope.animationsEnabled = true;
@@ -24,6 +30,43 @@ app.controller('resultsController',function($scope, $uibModal){
   };
 });
 
-app.controller('modalController',function($scope,$uibModalInstance){
-  // TODO implement the modalController logics.
+app.controller('modalController',function($scope,$uibModalInstance, addDrinkFactory){
+  
+  $scope.errorMessage = '';
+
+  $scope.add = function(){
+    addDrinkFactory.addDrink().then(function(data){
+      if(data){
+        $uibModalInstance.close();
+      }
+      else{
+        //TODO: demonstrate error to user
+        $scope.errorMessage = 'Server too fucked up. Check back later!'
+      }
+    });
+  };
+  $scope.cancel = function(){
+    $uibModalInstance.dismiss('cancel');
+  }
+});
+
+app.factory('addDrinkFactory',function($http, $location) {
+
+    var addDrink = function(drinkName){
+      var newData = {};
+      newData.item = drinkName;
+      return $http({
+        method: 'POST',
+        url: '/api/menu/add',
+        data: newData
+      })
+      .then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(response){
+        reject(response);
+      }); 
+  };
+  return {
+    addDrink: addDrink
+  };
 });

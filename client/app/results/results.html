@@ -1,21 +1,41 @@
 <div class='container'>
 <button ng-click='open()'>Add Drinks!</button>
-
-  <script id='modalContent.html' type='text/ng-template'>
-    <div class="modal-header">
-    </div>
+<!-- modal template -->
+<script id='modalContent.html' type='text/ng-template'>
     <div class="modal-body">
-      Open Modal!
+    <div ng-show='errorMessage'>{{errorMessage}}</div>
+      <h4>Add Drink and Rating!</h4>
+      <input type='text' placeholder='new item'>
+      <select>
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+      </select>
     </div>
-  </script>
-  
-  <h2>{{cafename}}</h2> 
-  <h3>Menu:</h3>
-  <ul>
+    <div class='modal-footer'>
+      <button class='btn btn-primary' type='button' ng-click='add()'>Add</button>
+      <button class='btn btn-warning' type='button' ng-click='cancel()'>Cancel</button>
+    </div> 
+</script>
+  <h2>{{cafeName}}</h2>
+  <address>
+    <div><strong>Address: </strong>{{address}}</div> 
+    <div><strong>Phone: </strong> {{phone}}</div>
+  </address>
+  <h3>Menu</h3>
+  <table class='table table-striped'>
+    <tr ng-repeat='menuItem in menu'>
+      <td><strong> Name:</strong> {{menuItem.item}}</td>  
+      <td><strong>Rating:</strong> {{menuItem.rating}} </td> 
+    </tr>
+  </table>
+<!--   <ul>
     <li ng-repeat="menuItem in menu">
-      Name: {{menuItem.item}} Rating: {{menuItem.rating}}
+      Name: {{menuItem.item}} Rating: {{menuItem.rating}} 
     </li>
-  </ul>
+  </ul> -->
 </div>
 
 
