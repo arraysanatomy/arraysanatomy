@@ -21,17 +21,16 @@ module.exports = {
     var rating = req.body ? req.body.menu[0].rating.toLowerCase() : null;
     var cafe = req.body ? req.body.cafe.name.toLowerCase() : null;
 
-
-
-    //TODO: how to determine which cafe to add new menu item to
-    // if(dbquery(menuItem.name)){
-    //   dbadd(menuItem);
-    //   res.status(200).send(dbquery(menuItem.name));
-    // }
-    // else{
-    //     res.sendStatus(400);
-    // }
-
+    db.doesCafeExist(cafe, function(booler){
+      if(booler){
+        db.addCafeMenuItem(req.body.cafe, function(){
+          res.status(200).send('Item added succesfully.');
+        });
+      }
+      else{
+        res.status(400).send("No cafe with that name exists, can't add item");
+      }
+    });
   },
 
   addCafe: function(req, res){
