@@ -2,7 +2,7 @@ var db = require('../db/dbserver.js');
 
 module.exports = {
 	search: function(req, res) {
-		var cafe = req.body ? req.body.cafe.toLowerCase() : null;
+		var cafe = req.body ? req.body.cafe.name.toLowerCase() : null;
     db.doesCafeExist(cafe, function(booler){
       if(booler){
         db.getCafe(cafe, function(cafeObj){
@@ -17,9 +17,9 @@ module.exports = {
 
   //used on POST to api/items/add
   addMenuItem: function(req, res){
-    var menuItem = req.body ? req.body.menuItem.toLowerCase() : null;
-
-
+    var menuItem = req.body ? req.body.menu[0].item.toLowerCase() : null;
+    var rating = req.body ? req.body.menu[0].rating.toLowerCase() : null;
+    var cafe = req.body ? req.body.cafe.name.toLowerCase() : null;
 
 
 
@@ -35,7 +35,7 @@ module.exports = {
   },
 
   addCafe: function(req, res){
-    var cafe = req.body ? req.body.cafe.toLowerCase() : null;
+    var cafe = req.body ? req.body.cafe.name.toLowerCase() : null;
     db.doesCafeExist(cafe, function(booler){
       if(booler){
         res.status(400).send('That cafe already exists.');
