@@ -16,6 +16,7 @@ body {
 }
 
 #company-title {
+   -webkit-text-stroke: 1px black;
   text-align: center;
   color: #5E2612;
   font-size: 48px;
@@ -24,17 +25,35 @@ letter-spacing: .5px;
 line-height: 44px;
 padding: 40px 0 22px 0;
 text-transform: uppercase;
-text-shadow: 2px 2px 1px rgba(255, 255, 255, .8);
+/*text-shadow: 2px 2px 1px rgba(233, 234, 229, 0.8);*/
 /*text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;*/
+text-shadow:
+    3px 3px 0 #b09069,
+    /* Simulated effect for Firefox and Opera
+       and nice enhancement for WebKit */
+   0px 0px 0 #b09069,
+    1px -1px 0 #b09069,
+   -1px  1px 0 #b09069,
+    1px  1px 0 #b09069;
 }
 
 #landing {
   text-align: center;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  /*text-shadow: -1px 0 #371f15, 0 1px #371f15, 1px 0 #371f15, 0 -1px #371f15;*/
+   -webkit-text-stroke: 1px #371f15;
+  text-shadow:
+      3px 3px 0 #e9eae5,
+      /* Simulated effect for Firefox and Opera
+         and nice enhancement for WebKit */
+     0px 0px 0 #e9eae5,
+      1px -1px 0 #e9eae5,
+     -1px  1px 0 #e9eae5,
+      1px  1px 0 #e9eae5;
+  }
 }
 
 #landing h3 {
-  color: #d7d8d5;
+  color: #f2f2f2;
   font-size: 25px;
   font-weight: bold;
 }
