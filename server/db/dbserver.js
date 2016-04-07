@@ -82,11 +82,46 @@ function doesCafeMenuItemExist(menuItemObj, cb){
 	})
 };
 
+function getCafe(cafeName, cb){
+	db.get("SELECT * FROM cafes WHERE name = ?", [cafeName], function(err, row){
+		var cafe = row;
+		var menu = [];
+
+		db.each("SELECT * FROM menu WHERE cafeID = ?", [cafe.ID], function(err, row){
+			menu.push(row);
+		}, function(err, numberOfRetrievedRows){
+			var cafeObj = {};
+			cafeObj.name = cafe.name;
+			cafeObj.menu = menu;
+			cb(cafeObj);
+		});
+	});
+};
+
+
+  // testing that functions work - later for mocha/chai
+  // var testObj = {
+  // 	name: "testingThis",
+  // 	menuItem: {
+  // 		name: "coffee",
+  // 		rating: 5
+  // 	}
+  // };
+  // db.addCafe("testingThis", function(){
+  // 	db.addCafeMenuItem(testObj, function(){
+  // 		db.getCafe("testingThis", function(row){
+  // 			console.log("row", row);
+  // 		});
+  // 	});
+  // });
+
+
 module.exports = {
 	db: db,
 	DBQuery: DBQuery,
 	addCafe: addCafe,
 	addCafeMenuItem: addCafeMenuItem,
 	doesCafeExist: doesCafeExist,
-	doesCafeMenuItemExist: doesCafeMenuItemExist
+	doesCafeMenuItemExist: doesCafeMenuItemExist,
+	getCafe: getCafe
 }
