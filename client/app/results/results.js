@@ -57,7 +57,7 @@ app.factory('addDrinkFactory',function($http, $location) {
       newData.item = drinkName;
       return $http({
         method: 'POST',
-        url: '/api/menu/add',
+        url: 'home/api/menu/add',
         data: newData
       })
       .then(function successCallback(response) {
