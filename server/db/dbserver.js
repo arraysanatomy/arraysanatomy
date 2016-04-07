@@ -27,12 +27,12 @@ if(!exists) {
 
 function DBQuery(menuItemObj){
 	var name = menuItemObj.name;
-	db.get("SELECT ID FROM cafes WHERE name = ?", [name], function(err, row){});
+	db.get("SELECT ID FROM cafes WHERE name = ?", [sqliteEscape(name)], function(err, row){});
 }
 
 // takes a string
 function addCafe(cafeName, cb){
-  db.run("INSERT INTO cafes(name) VALUES(?)", [cafeName], function(err){
+  db.run("INSERT INTO cafes(name) VALUES(?)", [sqliteEscape(cafeName)], function(err){
 		  if(err){
 		  	console.log('error inside addcafe: ', err);
 		  }
@@ -43,9 +43,9 @@ function addCafe(cafeName, cb){
 };
 
 function addCafeMenuItem(menuItemObj, cb){
-	var cafeName = menuItemObj.name;
-	var menuItemName = menuItemObj.menuItem.name;
-	var rating = menuItemObj.menuItem.rating;
+	var cafeName = sqliteEscape(menuItemObj.name);
+	var menuItemName = sqliteEscape(menuItemObj.menuItem.name);
+	var rating = sqliteEscape(menuItemObj.menuItem.rating);
   db.get("SELECT ID FROM cafes WHERE name = ?", [cafeName], function(err, row){
   	db.run("INSERT INTO menu(item, rating, cafeID) VALUES(?, ?, ?)", [menuItemName, rating, row.ID], function(err){
   		if(cb){
@@ -57,7 +57,7 @@ function addCafeMenuItem(menuItemObj, cb){
 };
 
 function doesCafeExist(cafeName, cb){
-	db.get("SELECT name FROM cafes WHERE name = ?", [cafeName], function(err, row){
+	db.get("SELECT name FROM cafes WHERE name = ?", [sqliteEscape(cafeName)], function(err, row){
 		if(cb){
       cb(!!(row));
 		}
@@ -66,7 +66,7 @@ function doesCafeExist(cafeName, cb){
 
 function doesCafeMenuItemExist(menuItemObj, cb){
 
-	db.get("SELECT ID FROM cafes WHERE name = ?", [menuItemObj.name], function(err, row){
+	db.get("SELECT ID FROM cafes WHERE name = ?", [sqliteEscape(menuItemObj.name)], function(err, row){
 		  db.get("SELECT item FROM menu WHERE item = ? AND cafeID = ?", [menuItemObj.menuItem.name, row.ID], function(err, row){
 		  	if(cb){
 		  		cb(!!(row));
@@ -76,7 +76,7 @@ function doesCafeMenuItemExist(menuItemObj, cb){
 };
 
 function getCafe(cafeName, cb){
-	db.get("SELECT * FROM cafes WHERE name = ?", [cafeName], function(err, row){
+	db.get("SELECT * FROM cafes WHERE name = ?", [sqliteEscape(cafeName)], function(err, row){
     var cafe = row;
 		var menu = [];
 
@@ -117,4 +117,31 @@ module.exports = {
 	doesCafeExist: doesCafeExist,
 	doesCafeMenuItemExist: doesCafeMenuItemExist,
 	getCafe: getCafe
+}
+
+//make strings friendly. Nothing should touch the DB without going through
+//here first
+function sqliteEscape (str) {
+    return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {
+        switch (char) {
+            case "\0":
+                return "\\0";
+            case "\x08":
+                return "\\b";
+            case "\x09":
+                return "\\t";
+            case "\x1a":
+                return "\\z";
+            case "\n":
+                return "\\n";
+            case "\r":
+                return "\\r";
+            case "\"":
+            case "'":
+            case "\\":
+            case "%":
+                return "\\"+char; // prepends a backslash to backslash, percent,
+                                  // and double/single quotes
+        }
+    });
 }
