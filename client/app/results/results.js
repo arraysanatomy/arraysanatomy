@@ -54,7 +54,10 @@ app.factory('addDrinkFactory',function($http, $location) {
 
     var addDrink = function(drinkName){
       var newData = {};
-      newData.item = drinkName;
+      //need to add newData.cafe.name for cafeName
+      //need to add newData.menu[0].rating
+      newData.menu = [];
+      newData.menu[0].item = drinkName;
       return $http({
         method: 'POST',
         url: 'home/api/menu/add',
