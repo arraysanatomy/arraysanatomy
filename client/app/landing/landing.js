@@ -4,7 +4,8 @@ app.factory('landingFactory',function($http, $location) {
 
     var getResults = function(cafeName){
       var newData = {};
-      newData.cafe = cafeName;
+      newData.cafe = {};
+      newData.cafe.name = cafeName;
       return $http({
         method: 'POST',
         url: '/home/search',
@@ -15,7 +16,7 @@ app.factory('landingFactory',function($http, $location) {
       }, function errorCallback(response){
         reject(response);
       });
-      
+
   };
 
   return {
@@ -36,7 +37,7 @@ app.controller('landingController',function($scope,
         $location.path('/results');
       })
       .catch(function (response){
-        // still inside model 
+        // still inside model
         // alert($scope.searchBoxModel);
         $location.path('/addCafe/id/' + $scope.searchBoxModel);
       });
