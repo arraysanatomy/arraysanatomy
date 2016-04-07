@@ -22,9 +22,20 @@ module.exports = {
     var cafe = req.body ? req.body.cafe.name.toLowerCase() : null;
 
     db.doesCafeExist(cafe, function(booler){
-      if(booler){
-        db.addCafeMenuItem(req.body.cafe, function(){
-          res.status(200).send('Item added succesfully.');
+      if(booler && menuItem && rating){
+        
+        var item = {
+          name: cafe,
+          menuItem: {
+            name: menuItem,
+            rating: rating
+          }
+        };
+
+        db.addCafeMenuItem(item, function(){
+          db.getCafe(cafe, function(cafeObj){
+            res.status(200).send(cafeObj);  
+          });
         });
       }
       else{

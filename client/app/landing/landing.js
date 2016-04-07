@@ -36,8 +36,6 @@ app.controller('landingController',function($scope,
         $location.path('/results');
       })
       .catch(function (response){
-        // still inside model
-        // alert($scope.searchBoxModel);
         $location.path('/addCafe/id/' + $scope.searchBoxModel);
       });
   };
