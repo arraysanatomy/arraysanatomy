@@ -5,8 +5,8 @@
     <div class="modal-body">
     <div ng-show='errorMessage'>{{errorMessage}}</div>
       <h4>Add Drink and Rating!</h4>
-      <input type='text' placeholder='new item'>
-      <select>
+      <input type='text' placeholder='new item' ng-model="beverage">
+      <select ng-model="rating">
         <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>
@@ -27,33 +27,8 @@
   <h3>Menu</h3>
   <table class='table table-striped'>
     <tr ng-repeat='menuItem in menu'>
-      <td><strong> Name:</strong> {{menuItem.item}}</td>  
+      <td><strong>Name:</strong> {{menuItem.item}}</td>  
       <td><strong>Rating:</strong> {{menuItem.rating}} </td> 
     </tr>
   </table>
-<!--   <ul>
-    <li ng-repeat="menuItem in menu">
-      Name: {{menuItem.item}} Rating: {{menuItem.rating}} 
-    </li>
-  </ul> -->
 </div>
-
-
-<!--  var m = [
-    {"Name": "a", rating: 3},
-{"Name": "tea", rating: 4},
-{"Name": "milk", rating: 5},
-{"Name": "juice", rating: 6},
-
-];
-
-function MyCtrl($scope) {
-    $scope.items = m;
-
-    <h3>FIFA Mactch Summary:</h3>
-<div ng-app ng-controller="MyCtrl">
-    <ul>
-        <li ng-repeat="object in items">Name: {{object.Name}} Rating: {{object.rating}}</li>
-    </ul>
-</div>
-}-->
