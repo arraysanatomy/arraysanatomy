@@ -13,7 +13,7 @@ if(!exists) {
 				 address VARCHAR(25), \
 				 phone VARCHAR(14) \
 				)");
-			
+
 			db.run("CREATE TABLE menu \
 				(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
 					item VARCHAR(15), \
@@ -32,7 +32,7 @@ function DBQuery(menuItemObj){
 
 // takes a string
 function addCafe(cafeName, cb){
-	db.run("INSERT INTO cafes(name) VALUES(?)", [cafeName], function(err){
+  db.run("INSERT INTO cafes(name) VALUES(?)", [cafeName], function(err){
 		  if(err){
 		  	console.log('error inside addcafe: ', err);
 		  }
@@ -59,17 +59,17 @@ function addCafeMenuItem(menuItemObj, cb){
 function doesCafeExist(cafeName, cb){
 	db.get("SELECT name FROM cafes WHERE name = ?", [cafeName], function(err, row){
 		if(cb){
-			cb(row);
+      cb(!!(row));
 		}
 	});
 };
 
 function doesCafeMenuItemExist(menuItemObj, cb){
-  
+
 	db.get("SELECT ID FROM cafes WHERE name = ?", [menuItemObj.name], function(err, row){
 		  db.get("SELECT item FROM menu WHERE item = ? AND cafeID = ?", [menuItemObj.menuItem.name, row.ID], function(err, row){
 		  	if(cb){
-		  		cb(row);
+		  		cb(!!(row));
 		  	}
 		  });
 	})
@@ -77,7 +77,7 @@ function doesCafeMenuItemExist(menuItemObj, cb){
 
 function getCafe(cafeName, cb){
 	db.get("SELECT * FROM cafes WHERE name = ?", [cafeName], function(err, row){
-		var cafe = row;
+    var cafe = row;
 		var menu = [];
 
 		db.each("SELECT * FROM menu WHERE cafeID = ?", [cafe.ID], function(err, row){
@@ -91,7 +91,7 @@ function getCafe(cafeName, cb){
 	});
 };
 
-	// TODO: add this to mocha/chai 
+	// TODO: add this to mocha/chai
   // testing that functions work - later for mocha/chai
   // var testObj = {
   // 	name: "testingThis",
