@@ -36,9 +36,9 @@
       <tr><th>Name></th><th>Rating></th></tr>
       </thead>
       <tbody>
-      <tr ng-repeat='menuItem in menu'>
-        <th><span class='tablehead'>Name:</span> {{menuItem.item}}</th>  
-        <th><span class='tablehead'>Rating:</span> {{menuItem.rating}} </th> 
+      <tr class='menuItem' ng-repeat='menuItem in menu'>
+        <th>{{menuItem.item}}</th>  
+        <th> {{menuItem.rating}} </th> 
       </tr>
       </tbody>
     </table>
