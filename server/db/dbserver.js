@@ -25,19 +25,19 @@ if(!exists) {
 		    FOREIGN KEY(cafeID) REFERENCES cafes(ID) \
       )");
 
-    // _.each(data, function(cafe){
-    //   addCafe(cafe.name.toLowerCase());
-    //   cafe.menu.forEach(function(menu){
-    //     var _item = {
-    //       name: cafe.name.toLowerCase(),
-    //       menuItem: {
-    //         name: menu.item,
-    //         rating: menu.rating
-    //       }
-    //     }
-    //     addCafeMenuItem(_item);
-    //   });
-    // })
+    _.each(data, function(cafe){
+      addCafe(cafe);
+      cafe.menu.forEach(function(menu){
+        var _item = {
+          name: cafe.name.toLowerCase(),
+          menuItem: {
+            name: menu.item,
+            rating: menu.rating
+          }
+        }
+        addCafeMenuItem(_item);
+      });
+    })
 
 	});
 }
@@ -50,7 +50,7 @@ function DBQuery(menuItemObj){
 
 // takes a string
 function addCafe(cafeObj, cb){
-  db.run("INSERT INTO cafes(name,address,phone) VALUES(?,?,?)", [sqliteEscape(cafeObj.name), sqliteEscape(cafeObj.address), sqliteEscape(cafeObj.phone)], function(err){
+  db.run("INSERT INTO cafes(name,address,phone) VALUES(?,?,?)", [sqliteEscape(cafeObj.name.toLowerCase()), sqliteEscape(cafeObj.address), sqliteEscape(cafeObj.phone)], function(err){
 		  if(err){
 		  	console.log('error inside addcafe: ', err);
 		  }

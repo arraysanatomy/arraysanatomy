@@ -8,7 +8,7 @@ app.controller('addCafeController', function($scope,
     var url = window.location.hash;
     var arr = url.split('/');
     var cafeName = arr[arr.length - 1];
-    $scope.cafe.name = cafeName;
+    $scope.cafe.name = decodeURIComponent(cafeName);
   };
 
   $scope.addCafe = function(){
