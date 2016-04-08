@@ -28,10 +28,7 @@ app.factory('addCafeFactory', function($http){
 
   var addCafe = function(newCafe){
     var data = {};
-    // data.cafe = {};
-    // data.cafe.name = newCafe;
     data.cafe = newCafe;
-    console.log("cafe is: ", newCafe);
     return $http({
       method: 'POST',
       url: 'home/api/cafe/add',
