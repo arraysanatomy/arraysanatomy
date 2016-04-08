@@ -20,20 +20,20 @@
     </div> 
 </script>
   <h2>{{cafeName}}</h2>
-  <address>
-    <div><strong>Address: </strong>{{address}}</div> 
-    <div><strong>Phone: </strong> {{phone}}</div>
-  </address>
+  <div class='cafeHead'>
+    <div class='contact'><h4>Address: </h4><span class='details'>{{address}}></span></div> 
+    <div class='contact'><h4>Phone: </h4><span class='details'>{{phone}}</span></div>
+  </div>
   <h3>Menu</h3>
   <div ng-controller='WithOptionsCtrl as showCase'>
-  <table datatable='ng' dt-options='showCase.dtOptions' dt-column-defs='showCase.dtColumnDefs' class='row-border hover'>
+  <table datatable='ng' dt-options='showCase.dtOptions' dt-column-defs='showCase.dtColumnDefs' class='menu'>
     <thead>
     <tr><th>Name></th><th>Rating></th></tr>
     </thead>
     <tbody>
     <tr ng-repeat='menuItem in menu'>
-      <th><strong>Name:</strong> {{menuItem.item}}</th>  
-      <th><strong>Rating:</strong> {{menuItem.rating}} </th> 
+      <th><span class='tablehead'>Name:</span> {{menuItem.item}}</th>  
+      <th><span class='tablehead'>Rating:</span> {{menuItem.rating}} </th> 
     </tr>
     </tbody>
   </table>

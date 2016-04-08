@@ -53,3 +53,11 @@ text-shadow:
   font-size: 25px;
   font-weight: bold;
 }
+
+.tablehead{
+  font-weight: 350;
+}
+
+.cafeHead .contact .details{
+  font-weight: 600;
+}
