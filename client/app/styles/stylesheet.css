@@ -69,6 +69,7 @@ text-shadow:
 }
 
 .contact{
+  margin-top: 20px;
   background-color: rgba(228,203,172, 0.6);
   border-radius: 10px;
   padding-left: 7px;
@@ -84,4 +85,18 @@ text-shadow:
 
 .menuItems{
 
+}
+
+.cafeHead{
+  
+}
+
+.cafeHead #cafeName{
+
+}
+
+.cafeHead button{
+  float:right;
+  margin-right: 200px;
+  margin-left: auto;
 }

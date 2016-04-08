@@ -1,5 +1,5 @@
 <div class='container'>
-<button ng-click='open()'>Add Drinks!</button>
+
 <!-- modal template -->
 <script id='modalContent.html' type='text/ng-template'>
     <div class="modal-body">
@@ -21,7 +21,8 @@
 </script>
 <div class='wrapper'>
   <div class='cafeHead'>
-    <h2>{{cafeName}}</h2>
+    <span id='cafeName'>{{cafeName}}</span>
+    <button ng-click='open()'>Add Drinks!</button>
     <div class='contact'>
       <div class='contactItem'><h4>Address: </h4><span class='details'>{{address}}></span></div> 
       <div class='contactItem'><h4>Phone: </h4><span class='details'>{{phone}}</span></div>
