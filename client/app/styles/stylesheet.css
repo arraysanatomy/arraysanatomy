@@ -6,27 +6,50 @@
   background-repeat: no-repeat;
 
 }*/
-body { 
-  background: url('../assets/coffee-banner.jpg') no-repeat center center fixed; 
+body {
+  background: url('../assets/coffee-banner.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #company-title {
+   -webkit-text-stroke: .5px #30281e;
   text-align: center;
-  color: #5E2612;
-  font-size: 60px;
-  font-weight: 700;
+  color: #391e0d;
+  font-size: 55px;
+font-weight: 350;
+letter-spacing: .5px;
+line-height: 44px;
+padding: 40px 0 22px 0;
+text-transform: uppercase;
+/*text-shadow: 2px 2px 1px rgba(233, 234, 229, 0.8);*/
+/*text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;*/
+text-shadow:
+    3px 3px 0 #b09069,
+   0px 0px 0 #b09069,
+    1px -1px 0 #b09069,
+   -1px  1px 0 #b09069,
+    1px  1px 0 #b09069;
 }
 
 #landing {
   text-align: center;
+  /*text-shadow: -1px 0 #371f15, 0 1px #371f15, 1px 0 #371f15, 0 -1px #371f15;*/
+   -webkit-text-stroke: .5px #371f15;
+  text-shadow:
+      3px 3px 0 #b09069,
+     0px 0px 0 #b09069,
+      1px -1px 0 #b09069,
+     -1px  1px 0 #b09069,
+      1px  1px 0 #b09069;
+  }
 }
 
 #landing h3 {
-  color: #AEEEEE;
+  color: #f2f2f2;
   font-size: 25px;
   font-weight: bold;
 }
