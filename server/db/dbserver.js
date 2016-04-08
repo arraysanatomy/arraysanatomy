@@ -49,8 +49,8 @@ function DBQuery(menuItemObj){
 }
 
 // takes a string
-function addCafe(cafeName, cb){
-  db.run("INSERT INTO cafes(name) VALUES(?)", [sqliteEscape(cafeName)], function(err){
+function addCafe(cafeObj, cb){
+  db.run("INSERT INTO cafes(name,address,phone) VALUES(?,?,?)", [sqliteEscape(cafeObj.name), sqliteEscape(cafeObj.address), sqliteEscape(cafeObj.phone)], function(err){
 		  if(err){
 		  	console.log('error inside addcafe: ', err);
 		  }
