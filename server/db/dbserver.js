@@ -103,6 +103,8 @@ function getCafe(cafeName, cb){
 		}, function(err, numberOfRetrievedRows){
 			var cafeObj = {};
 			cafeObj.name = cafe.name;
+      cafeObj.phone = cafe.phone;
+      cafeObj.address = cafe.address;
 			cafeObj.menu = menu;
 			cb(cafeObj);
 		});
