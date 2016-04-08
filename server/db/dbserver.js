@@ -4,23 +4,41 @@ var file = "./server/db/cafe.db";
 var db = new sqlite3.Database(file);
 var exists = fs.existsSync(file);
 
+var _ = require('underscore');
+var data = require('./db');
+
 if(!exists) {
 	console.log("Creating DB file.");
 	db.serialize(function(){
-			db.run("CREATE TABLE cafes \
-				(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
-				 name VARCHAR(15), \
-				 address VARCHAR(25), \
-				 phone VARCHAR(14) \
-				)");
+		db.run("CREATE TABLE cafes \
+			(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
+			 name VARCHAR(15), \
+			 address VARCHAR(25), \
+			 phone VARCHAR(14) \
+			)");
 
-			db.run("CREATE TABLE menu \
-				(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
-					item VARCHAR(15), \
-					rating REAL(1), \
-			    cafeID INTEGER(10), \
-			    FOREIGN KEY(cafeID) REFERENCES cafes(ID) \
-        )");
+		db.run("CREATE TABLE menu \
+			(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
+				item VARCHAR(15), \
+				rating REAL(1), \
+		    cafeID INTEGER(10), \
+		    FOREIGN KEY(cafeID) REFERENCES cafes(ID) \
+      )");
+
+    _.each(data, function(cafe){
+      addCafe(cafe.name.toLowerCase());
+      cafe.menu.forEach(function(menu){
+        var _item = {
+          name: cafe.name.toLowerCase(),
+          menuItem: {
+            name: menu.item,
+            rating: menu.rating
+          }
+        }
+        addCafeMenuItem(_item);
+      });
+    })
+
 	});
 }
 
@@ -45,7 +63,7 @@ function addCafe(cafeName, cb){
 function addCafeMenuItem(menuItemObj, cb){
 	var cafeName = sqliteEscape(menuItemObj.name);
 	var menuItemName = sqliteEscape(menuItemObj.menuItem.name);
-	var rating = sqliteEscape(menuItemObj.menuItem.rating);
+	var rating = menuItemObj.menuItem.rating;
   db.get("SELECT ID FROM cafes WHERE name = ?", [cafeName], function(err, row){
   	db.run("INSERT INTO menu(item, rating, cafeID) VALUES(?, ?, ?)", [menuItemName, rating, row.ID], function(err){
   		if(cb){
