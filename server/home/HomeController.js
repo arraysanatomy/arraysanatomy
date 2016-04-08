@@ -51,7 +51,7 @@ module.exports = {
         res.status(400).send('That cafe already exists.');
       }
       else{
-        db.addCafe(cafe.name.toLowerCase(), function(){
+        db.addCafe(cafe, function(){
           db.getCafe(cafe.name.toLowerCase(), function(cafeObj){
             res.status(200).send(JSON.stringify(cafeObj));
           });
