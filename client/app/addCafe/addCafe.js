@@ -2,12 +2,13 @@ var app = angular.module('mainApp.addCafe', []);
 
 app.controller('addCafeController', function($scope,
   $location, $window, addCafeFactory){
+  $scope.cafe = {};
 
   $scope.getInput = function(){
     var url = window.location.hash;
     var arr = url.split('/');
     var cafeName = arr[arr.length - 1];
-    $scope.cafe = cafeName;
+    $scope.cafe.name = cafeName;
   };
 
   $scope.addCafe = function(){
@@ -27,9 +28,10 @@ app.factory('addCafeFactory', function($http){
 
   var addCafe = function(newCafe){
     var data = {};
-    data.cafe = {};
-    data.cafe.name = newCafe;
-
+    // data.cafe = {};
+    // data.cafe.name = newCafe;
+    data.cafe = newCafe;
+    console.log("cafe is: ", newCafe);
     return $http({
       method: 'POST',
       url: 'home/api/cafe/add',
