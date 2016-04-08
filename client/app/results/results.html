@@ -19,23 +19,30 @@
       <button class='btn btn-warning' type='button' ng-click='cancel()'>Cancel</button>
     </div> 
 </script>
-  <h2>{{cafeName}}</h2>
+<div class='wrapper'>
   <div class='cafeHead'>
-    <div class='contact'><h4>Address: </h4><span class='details'>{{address}}></span></div> 
-    <div class='contact'><h4>Phone: </h4><span class='details'>{{phone}}</span></div>
+    <h2>{{cafeName}}</h2>
+    <div class='contact'>
+      <div class='contactItem'><h4>Address: </h4><span class='details'>{{address}}></span></div> 
+      <div class='contactItem'><h4>Phone: </h4><span class='details'>{{phone}}</span></div>
+    </div>
   </div>
-  <h3>Menu</h3>
-  <div ng-controller='WithOptionsCtrl as showCase'>
-  <table datatable='ng' dt-options='showCase.dtOptions' dt-column-defs='showCase.dtColumnDefs' class='menu'>
-    <thead>
-    <tr><th>Name></th><th>Rating></th></tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat='menuItem in menu'>
-      <th><span class='tablehead'>Name:</span> {{menuItem.item}}</th>  
-      <th><span class='tablehead'>Rating:</span> {{menuItem.rating}} </th> 
-    </tr>
-    </tbody>
-  </table>
+  <div class='menuWrapper'>
+    <span class='menuHeader'><h3>Menu</h3></span>
+    <div >
+    <div class='menuItems' ng-controller='WithOptionsCtrl as showCase'>
+    <table datatable='ng' dt-options='showCase.dtOptions' dt-column-defs='showCase.dtColumnDefs' class='menu'>
+      <thead>
+      <tr><th>Name></th><th>Rating></th></tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat='menuItem in menu'>
+        <th><span class='tablehead'>Name:</span> {{menuItem.item}}</th>  
+        <th><span class='tablehead'>Rating:</span> {{menuItem.rating}} </th> 
+      </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
   </div>
 </div>

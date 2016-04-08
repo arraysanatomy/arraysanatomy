@@ -58,6 +58,26 @@ text-shadow:
   font-weight: 350;
 }
 
-.cafeHead .contact .details{
+.cafeHead .contactItem .details{
   font-weight: 600;
+}
+
+.wrapper{
+  border-width: 5px;
+  border-color: black;
+  /*background-color: red;*/
+}
+
+.contact{
+  background-color: blue;
+}
+
+.menuWrapper{
+  background-color: rgba(255,255,255, 0.6);
+  border-radius: 10px;
+  padding-left: 7px;
+}
+
+.menuItems{
+
 }
