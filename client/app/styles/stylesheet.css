@@ -110,3 +110,11 @@ text-shadow:
   padding-bottom: auto;
   margin-top: 10px;
 }
+
+.modal-body {
+  background-color: rgba(228,203,172, 0.6);
+}
+
+.modal-footer{
+  background-color: rgba(228,203,172, 0.6);
+}
