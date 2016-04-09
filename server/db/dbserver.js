@@ -152,8 +152,10 @@ function sqliteEscape (str) {
                 return "\\n";
             case "\r":
                 return "\\r";
-            case "\"":
             case "'":
+                return "\'";
+            case "\"":
+            // case "'":
             case "\\":
             case "%":
                 return "\\"+char; // prepends a backslash to backslash, percent,
