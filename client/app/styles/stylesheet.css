@@ -130,6 +130,10 @@ table .label {
   margin-right: 60%;
 }
 
+#searchButton {
+  margin-top: 10px;
+}
+
 #noCafe {
   margin-left: auto;
   margin-right: auto;
