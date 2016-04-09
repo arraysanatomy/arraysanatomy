@@ -118,3 +118,7 @@ table  {
 .modal-footer{
   background-color: rgba(228,203,172, 0.6);
 }
+
+#searchButton {
+  margin-top: 10px;
+}
