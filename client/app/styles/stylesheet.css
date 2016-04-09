@@ -118,3 +118,22 @@ table  {
 .modal-footer{
   background-color: rgba(228,203,172, 0.6);
 }
+
+#searchButton {
+  margin-top: 10px;
+}
+#noCafe {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-text-stroke: .5px #30281e;
+  font-weight: 350;
+  text-shadow:
+    3px 3px 0 #b09069,
+    0px 0px 0 #b09069,
+    1px -1px 0 #b09069,
+   -1px  1px 0 #b09069,
+    1px  1px 0 #b09069;
+}

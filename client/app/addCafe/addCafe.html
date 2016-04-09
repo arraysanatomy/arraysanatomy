@@ -1,5 +1,5 @@
 <div class='container'>
-  <h3>We can't find following cafe. Would you like add "{{cafe.name}}" to our site? </h3>
+  <span id='noCafe'><h3>We couldn't find that cafe. Would you like to add "{{cafe.name}}" to Caffiend? </h3></span>
   <form>
     <center>
       <input type='text' id='searchbox' ng-model='cafe.name' size='25' readonly>
@@ -13,7 +13,7 @@
       <input type='text' id='phone' size='25' ng-model='cafe.phone' placeholder='Phone Number'>
     </center>
     <center>
-      <button id='searchButton' type='button' ng-click='addCafe()'>Add</button>
-    </center>
+      <button class='btn btn-primary' id='searchButton' type='button' ng-click='addCafe()'>Add</button>
+    </center> 
   </form>
 </div>
