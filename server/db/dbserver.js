@@ -3,7 +3,6 @@ var fs = require('fs');
 var file = "./server/db/cafe.db";
 var db = new sqlite3.Database(file);
 var exists = fs.existsSync(file);
-
 var _ = require('underscore');
 var data = require('./db');
 
@@ -38,10 +37,8 @@ if(!exists) {
         addCafeMenuItem(_item);
       });
     })
-
 	});
 }
-
 
 function DBQuery(menuItemObj){
 	var name = menuItemObj.name;
@@ -71,7 +68,6 @@ function addCafeMenuItem(menuItemObj, cb){
   		}
   	});
   });
-
 };
 
 function doesCafeExist(cafeName, cb){
@@ -156,12 +152,12 @@ function sqliteEscape (str) {
                 return "\\n";
             case "\r":
                 return "\\r";
-            case "\"":
             case "'":
+                return "\'";
+            case "\"":
             case "\\":
             case "%":
-                return "\\"+char; // prepends a backslash to backslash, percent,
-                                  // and double/single quotes
+                return "\\"+char; // prepends a backslash to backslash and, percent.
         }
     });
 }

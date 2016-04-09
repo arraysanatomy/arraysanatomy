@@ -8,18 +8,18 @@ body {
 }
 
 #company-title {
-   -webkit-text-stroke: .5px #30281e;
+  -webkit-text-stroke: .5px #30281e;
   text-align: center;
   color: #391e0d;
   font-size: 55px;
-font-weight: 350;
-letter-spacing: .5px;
-line-height: 44px;
-padding: 40px 0 22px 0;
-text-transform: uppercase;
-text-shadow:
-    3px 3px 0 #b09069,
-   0px 0px 0 #b09069,
+  font-weight: 350;
+  letter-spacing: .5px;
+  line-height: 44px;
+  padding: 40px 0 22px 0;
+  text-transform: uppercase;
+  text-shadow:
+    3px 3px 0 #b09069,   
+    0px 0px 0 #b09069,
     1px -1px 0 #b09069,
    -1px  1px 0 #b09069,
     1px  1px 0 #b09069;
@@ -27,7 +27,6 @@ text-shadow:
 
 #landing {
   text-align: center;
-   -webkit-text-stroke: .5px #371f15;
   text-shadow:
       3px 3px 0 #b09069,
      0px 0px 0 #b09069,
@@ -85,12 +84,11 @@ text-shadow:
   height: 40px;
   margin-top: 10px;
 }
+
 table  {
     border-top: none !important;
     border-bottom: none !important;
 }
-
-
 
 .cafeHead #cafeName{
   font-size: 40px;
@@ -119,9 +117,22 @@ table  {
   background-color: rgba(228,203,172, 0.6);
 }
 
+.coffee-cup {
+  height: 18px;
+  width: 18px;
+  background-size: contain;
+  background-image: url("../assets/coffee-mug.png");
+}
+
+table .label {
+  float: right;
+  margin-right: 60%;
+}
+
 #searchButton {
   margin-top: 10px;
 }
+
 #noCafe {
   margin-left: auto;
   margin-right: auto;

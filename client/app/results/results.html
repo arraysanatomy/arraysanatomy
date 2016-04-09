@@ -31,19 +31,25 @@
   <div class='menuWrapper'>
     <span class='menuHeader'><h3>Menu</h3></span>
     <div >
-    <div class='menuItems' ng-controller='WithOptionsCtrl as showCase'>
-    <table datatable='ng' dt-options='showCase.dtOptions' dt-column-defs='showCase.dtColumnDefs' class='menu'>
-      <thead>
-      <tr><th>Name</th><th>Rating</th></tr>
-      </thead>
-      <tbody>
-      <tr class='menuItem' ng-repeat='menuItem in menu'>
-        <th>{{menuItem.item}}</th>  
-        <th> {{menuItem.rating}} </th> 
-      </tr>
-      </tbody>
-    </table>
-    </div>
+      <div class='menuItems' ng-controller='WithOptionsCtrl as showCase'>
+      <table datatable='ng' dt-options='showCase.dtOptions' dt-column-defs='showCase.dtColumnDefs' class='menu'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr class='menuItem' ng-repeat='menuItem in menu'>
+          <th>{{menuItem.item}}</th>
+          <td>
+            <uib-rating ng-model="menuItem.rating" max="max" read-only="true" on-hover="showPercent = true" on-leave="showPercent = false" state-on="'coffee-cup'" state-off="'null'"></uib-rating>
+            <span class="label rating" ng-class="{'label-warning': percent(menuItem.rating)<30, 'label-info': percent(menuItem.rating)>=30 && percent(menuItem.rating)<70, 'label-success': percent(menuItem.rating)>=70}" ng-show="showPercent">{{percent(menuItem.rating)}}%</span>
+          </td>        
+        </tr>
+        </tbody>
+      </table>
+      </div>
     </div>
   </div>
 </div>

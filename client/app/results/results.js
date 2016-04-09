@@ -16,6 +16,12 @@ app.controller('resultsController',function($scope, $uibModal){
   $scope.address = cafe.address;
   $scope.phone = cafe.phone;
   $scope.menu = cafe.menu;
+  $scope.max = 5;
+  $scope.showPercent = false;
+
+  $scope.percent = function(rating) {
+    return rating/$scope.max * 100;
+  };
 
   $scope.animationsEnabled = true;
   $scope.open = function(){
