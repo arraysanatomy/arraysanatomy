@@ -1,11 +1,3 @@
-/*body {
-
-
-  background-image: url('../assets/coffee-banner.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-
-}*/
 body {
   background: url('../assets/coffee-banner.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -16,20 +8,18 @@ body {
 }
 
 #company-title {
-   -webkit-text-stroke: .5px #30281e;
+  -webkit-text-stroke: .5px #30281e;
   text-align: center;
   color: #391e0d;
   font-size: 55px;
-font-weight: 350;
-letter-spacing: .5px;
-line-height: 44px;
-padding: 40px 0 22px 0;
-text-transform: uppercase;
-/*text-shadow: 2px 2px 1px rgba(233, 234, 229, 0.8);*/
-/*text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;*/
-text-shadow:
-    3px 3px 0 #b09069,
-   0px 0px 0 #b09069,
+  font-weight: 350;
+  letter-spacing: .5px;
+  line-height: 44px;
+  padding: 40px 0 22px 0;
+  text-transform: uppercase;
+  text-shadow:
+    3px 3px 0 #b09069,   
+    0px 0px 0 #b09069,
     1px -1px 0 #b09069,
    -1px  1px 0 #b09069,
     1px  1px 0 #b09069;
@@ -37,8 +27,6 @@ text-shadow:
 
 #landing {
   text-align: center;
-  /*text-shadow: -1px 0 #371f15, 0 1px #371f15, 1px 0 #371f15, 0 -1px #371f15;*/
-   -webkit-text-stroke: .5px #371f15;
   text-shadow:
       3px 3px 0 #b09069,
      0px 0px 0 #b09069,
@@ -52,4 +40,104 @@ text-shadow:
   color: #f2f2f2;
   font-size: 25px;
   font-weight: bold;
+}
+
+.tablehead{
+  font-weight: 350;
+}
+
+.cafeHead .contactItem .details{
+  font-weight: 600;
+}
+
+.wrapper{
+  border-width: 5px;
+  border-color: black;
+}
+
+.contact{
+  margin-top: 20px;
+  background-color: rgba(228,203,172, 0.6);
+  border-radius: 10px;
+  padding-left: 7px;
+  padding-bottom: 3px;
+  padding-top: 1px;
+}
+
+.menuWrapper{
+  background-color: rgba(228,203,172, 0.6);
+  border-radius: 10px;
+  padding-left: 7px;
+}
+
+#addDrinks{
+  float:right;
+  margin-left: auto;
+  width: 100px;
+  height: 40px;
+  margin-top: 10px;
+}
+
+table  {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.cafeHead #cafeName{
+  font-size: 40px;
+   -webkit-text-stroke: .5px #30281e;
+  letter-spacing: .5px;
+  text-transform: capitalize;
+  font-weight: 400;
+  text-shadow:
+    3px 3px 0 #b09069,
+   0px 0px 0 #b09069,
+    1px -1px 0 #b09069,
+   -1px  1px 0 #b09069,
+    1px  1px 0 #b09069;
+}
+
+.cafeHead button{
+  padding-bottom: auto;
+  margin-top: 10px;
+}
+
+.modal-body {
+  background-color: rgba(228,203,172, 0.6);
+}
+
+.modal-footer{
+  background-color: rgba(228,203,172, 0.6);
+}
+
+.coffee-cup {
+  height: 18px;
+  width: 18px;
+  background-size: contain;
+  background-image: url("../assets/coffee-mug.png");
+}
+
+table .label {
+  float: right;
+  margin-right: 60%;
+}
+
+#searchButton {
+  margin-top: 10px;
+}
+
+#noCafe {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-text-stroke: .5px #30281e;
+  font-weight: 350;
+  text-shadow:
+    3px 3px 0 #b09069,
+    0px 0px 0 #b09069,
+    1px -1px 0 #b09069,
+   -1px  1px 0 #b09069,
+    1px  1px 0 #b09069;
 }

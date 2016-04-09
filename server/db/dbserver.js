@@ -3,7 +3,6 @@ var fs = require('fs');
 var file = "./server/db/cafe.db";
 var db = new sqlite3.Database(file);
 var exists = fs.existsSync(file);
-
 var _ = require('underscore');
 var data = require('./db');
 
@@ -26,7 +25,7 @@ if(!exists) {
       )");
 
     _.each(data, function(cafe){
-      addCafe(cafe.name.toLowerCase());
+      addCafe(cafe);
       cafe.menu.forEach(function(menu){
         var _item = {
           name: cafe.name.toLowerCase(),
@@ -38,10 +37,8 @@ if(!exists) {
         addCafeMenuItem(_item);
       });
     })
-
 	});
 }
-
 
 function DBQuery(menuItemObj){
 	var name = menuItemObj.name;
@@ -49,8 +46,8 @@ function DBQuery(menuItemObj){
 }
 
 // takes a string
-function addCafe(cafeName, cb){
-  db.run("INSERT INTO cafes(name) VALUES(?)", [sqliteEscape(cafeName)], function(err){
+function addCafe(cafeObj, cb){
+  db.run("INSERT INTO cafes(name,address,phone) VALUES(?,?,?)", [sqliteEscape(cafeObj.name.toLowerCase()), sqliteEscape(cafeObj.address), sqliteEscape(cafeObj.phone)], function(err){
 		  if(err){
 		  	console.log('error inside addcafe: ', err);
 		  }
@@ -71,7 +68,6 @@ function addCafeMenuItem(menuItemObj, cb){
   		}
   	});
   });
-
 };
 
 function doesCafeExist(cafeName, cb){
@@ -103,6 +99,8 @@ function getCafe(cafeName, cb){
 		}, function(err, numberOfRetrievedRows){
 			var cafeObj = {};
 			cafeObj.name = cafe.name;
+      cafeObj.phone = cafe.phone;
+      cafeObj.address = cafe.address;
 			cafeObj.menu = menu;
 			cb(cafeObj);
 		});
@@ -154,12 +152,12 @@ function sqliteEscape (str) {
                 return "\\n";
             case "\r":
                 return "\\r";
-            case "\"":
             case "'":
+                return "\'";
+            case "\"":
             case "\\":
             case "%":
-                return "\\"+char; // prepends a backslash to backslash, percent,
-                                  // and double/single quotes
+                return "\\"+char; // prepends a backslash to backslash and, percent.
         }
     });
 }
