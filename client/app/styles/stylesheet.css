@@ -27,19 +27,15 @@ body {
 
 #landing {
   text-align: center;
-  text-shadow:
-      3px 3px 0 #b09069,
-     0px 0px 0 #b09069,
-      1px -1px 0 #b09069,
-     -1px  1px 0 #b09069,
-      1px  1px 0 #b09069;
-  }
 }
 
 #landing h3 {
-  color: #f2f2f2;
-  font-size: 25px;
-  font-weight: bold;
+  text-shadow:
+    3px 3px 0 #b09069,
+   0px 0px 0 #b09069,
+    1px -1px 0 #b09069,
+   -1px  1px 0 #b09069,
+    1px  1px 0 #b09069;
 }
 
 .tablehead{
