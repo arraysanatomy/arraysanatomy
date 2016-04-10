@@ -26,7 +26,7 @@ app.factory('landingFactory',function($http, $location) {
 app.controller('landingController',function($scope,
  $window, $location, landingFactory){
 
-  $scope.tooltip = 'Please enter a non-empty string';
+  $scope.tooltip = 'Please enter valid cafe name';
   $scope.getResults = function() {
     if (!$scope.searchBoxModel || $scope.searchBoxModel.trim() === '') {
       $scope.showTooltip = true;
