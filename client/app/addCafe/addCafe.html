@@ -1,19 +1,12 @@
+<link rel="stylesheet" type="text/css" href="app/styles/addCafe.css"></link>
 <div class='container'>
   <span id='noCafe'><h3>We couldn't find that cafe. Would you like to add "{{cafe.name}}" to Caffiend? </h3></span>
   <form>
-    <center>
-      <input type='text' id='searchbox' ng-model='cafe.name' size='25' readonly>
-    </center>
-    <br><br>
-    <center>
-      <input type='text' id='address' ng-model='cafe.address' placeholder='Address' size='25'>
-    </center>
-    <br><br>
-    <center>
-      <input type='text' id='phone' size='25' ng-model='cafe.phone' placeholder='Phone Number'>
-    </center>
-    <center>
-      <button class='btn btn-primary' id='searchButton' type='button' ng-click='addCafe()'>Add</button>
-    </center> 
+      <input type='text' class="col-md-offset-4 col-md-4 col-xs-10 col-xs-offset-1" ng-model='cafe.name' size='25' readonly>
+      <input type='text' class="col-md-offset-4 col-md-4 col-xs-10 col-xs-offset-1" ng-model='cafe.address' placeholder='Address' size='25'
+        uib-tooltip="{{tooltip_addr}}" tooltip-is-open="show_tooltip_addr" tooltip-placement="right" tooltip-trigger="none">
+      <input type='text' class="col-md-offset-4 col-md-4 col-xs-10 col-xs-offset-1" size='25' ng-model='cafe.phone' placeholder='Phone Number'
+        uib-tooltip="{{tooltip_phone}}" tooltip-is-open="show_tooltip_phone" tooltip-placement="right" tooltip-trigger="none">
+      <input type="submit" class="col-md-offset-5 col-md-2 col-xs-10 col-xs-offset-1 btn btn-primary btn-sm" id='searchButton' ng-click='addCafe()' value="Add">
   </form>
 </div>
