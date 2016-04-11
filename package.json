@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/karma/bin/karma start --single-run"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/chjasonwu/arraysanatomy#readme",
   "dependencies": {
     "angular": "^1.5.3",
+    "angular-mocks": "^1.5.3",
     "body-parser": "^1.15.0",
     "bower": "^1.7.9",
     "express": "^4.13.4",
@@ -28,9 +29,21 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "grunt": "^1.0.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-nodemon": "^0.4.1"
+    "grunt-nodemon": "^0.4.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.3",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-html-reporter": "^0.2.7",
+    "karma-jasmine": "^0.3.8",
+    "karma-jasmine-html-reporter": "^0.2.0",
+    "karma-mocha": "^0.2.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-unicorn-reporter": "^0.1.4",
+    "phantomjs": "^2.1.7"
   }
 }
