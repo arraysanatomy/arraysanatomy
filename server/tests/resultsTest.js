@@ -28,10 +28,15 @@ describe('resultsController', function(){
   var $scope = {};
 
   describe('$scope', function(){
+    
+    it('should be \'starbucks\'', function(){
+      var controller = $controller('resultsController', {$scope: $scope});
+      expect($scope.cafeName).toBe('starbucks');
+    });
+
     it('should be five.', function(){
       var controller = $controller('resultsController', {$scope: $scope});
       expect($scope.max).toBe(5);
-      console.log($scope.max);
     });
-  });  
+  });
 });

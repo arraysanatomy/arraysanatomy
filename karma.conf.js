@@ -33,7 +33,7 @@ module.exports = function(config) {
       'client/app/results/*.js',
       'client/app/app.js',
 
-      'server/tests/resultsTesting.js'
+      'server/tests/**/*.js'
     ],
 
 
