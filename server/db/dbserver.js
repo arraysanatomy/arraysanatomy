@@ -107,24 +107,6 @@ function getCafe(cafeName, cb){
 	});
 };
 
-	// TODO: add this to mocha/chai
-  // testing that functions work - later for mocha/chai
-  // var testObj = {
-  // 	name: "testingThis",
-  // 	menuItem: {
-  // 		name: "coffee",
-  // 		rating: 5
-  // 	}
-  // };
-  // db.addCafe("testingThis", function(){
-  // 	db.addCafeMenuItem(testObj, function(){
-  // 		db.getCafe("testingThis", function(row){
-  // 			console.log("row", row);
-  // 		});
-  // 	});
-  // });
-
-
 module.exports = {
 	db: db,
 	DBQuery: DBQuery,

@@ -1,5 +1,10 @@
 <div id="landing" class='container'>
-  <h3>Not all coffee is created equal.</h3>
-  <input type='text' id='searchbox' ng-model='searchBoxModel' placeholder="Type in a Cafe" />
-  <button class='btn btn-primary btn-sm' type='button' ng-click='getResults()'>Search</button>
+  <h3 class="col-md-offset-4 col-xs-offset-2">Not all coffee is created equal.</h3>
+  <div>
+    <form>
+      <input type='text' class="col-md-offset-4 col-md-3 col-xs-6 col-xs-offset-2" ng-model='searchBoxModel' placeholder="Type in a Cafe" 
+        uib-tooltip="{{tooltip}}" tooltip-is-open="showTooltip" tooltip-placement="bottom" tooltip-trigger="none">
+      <input type="submit" class="btn btn-primary btn-sm" ng-click='getResults()' value="Search" >
+    </form>
+  </div>
 </div>

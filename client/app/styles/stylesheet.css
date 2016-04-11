@@ -9,7 +9,6 @@ body {
 
 #company-title {
   -webkit-text-stroke: .5px #30281e;
-  text-align: center;
   color: #391e0d;
   font-size: 55px;
   font-weight: 350;
@@ -25,21 +24,17 @@ body {
     1px  1px 0 #b09069;
 }
 
-#landing {
-  text-align: center;
+#landing h3 {
   text-shadow:
-      3px 3px 0 #b09069,
-     0px 0px 0 #b09069,
-      1px -1px 0 #b09069,
-     -1px  1px 0 #b09069,
-      1px  1px 0 #b09069;
-  }
+    3px 3px 0 #b09069,
+   0px 0px 0 #b09069,
+    1px -1px 0 #b09069,
+   -1px  1px 0 #b09069,
+    1px  1px 0 #b09069;
 }
 
-#landing h3 {
-  color: #f2f2f2;
-  font-size: 25px;
-  font-weight: bold;
+#landing input[type="submit"] {
+  margin-left: 10px;
 }
 
 .tablehead{
@@ -122,22 +117,3 @@ table .label {
   margin-right: 60%;
 }
 
-#searchButton {
-  margin-top: 10px;
-}
-
-#noCafe {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-text-stroke: .5px #30281e;
-  font-weight: 350;
-  text-shadow:
-    3px 3px 0 #b09069,
-    0px 0px 0 #b09069,
-    1px -1px 0 #b09069,
-   -1px  1px 0 #b09069,
-    1px  1px 0 #b09069;
-}

@@ -1,8 +1,12 @@
 var app = angular.module('mainApp.addCafe', []);
 
 app.controller('addCafeController', function($scope,
-  $location, $window, addCafeFactory){
+  $location, $window, addCafeFactory, utils){
   $scope.cafe = {};
+  $scope.tooltip_addr = "Please enter a valid address";
+  $scope.tooltip_phone = "Please enter a valid number";
+  $scope.show_tooltip_addr = false;
+  $scope.show_tooltip_phone = false;
 
   $scope.getInput = function(){
     var url = window.location.hash;
@@ -12,6 +16,11 @@ app.controller('addCafeController', function($scope,
   };
 
   $scope.addCafe = function(){
+
+    $scope.show_tooltip_addr = !utils.isValidAddress($scope.cafe.address);
+    $scope.show_tooltip_phone = !utils.isValidPhone($scope.cafe.phone);
+
+    if ($scope.show_tooltip_addr || $scope.show_tooltip_phone) return;
 
     addCafeFactory.addCafe($scope.cafe)
       .then(function(data){
@@ -44,4 +53,20 @@ app.factory('addCafeFactory', function($http){
   return {
     addCafe: addCafe
   };
+});
+
+app.factory('utils', function(){
+
+  var validateAddress = function(addr){
+    return addr && addr.trim() !== '';
+  }; 
+
+  var validatePhone = function(phone) {
+    return phone && phone.trim() !== '';
+  }
+
+  return {
+    isValidAddress: validateAddress,
+    isValidPhone: validatePhone
+  }
 });
