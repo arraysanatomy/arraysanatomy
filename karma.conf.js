@@ -15,13 +15,25 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [ 
+
+      // lists of libraries
+      'client/app/lib/jquery/dist/jquery.js',
+      'client/app/lib/datatables/media/js/jquery.dataTables.js',
       'node_modules/angular/angular.js',
+      'client/app/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+      'client/app/lib/angular-datatables/dist/angular-datatables.js',
+      'client/app/lib/bootstrap/js/bootstrap.js',
+
+      // required for unit tests
       'node_modules/angular-mocks/angular-mocks.js',
+
+      // list of files needed to be tested
       'client/app/addCafe/*.js',
       'client/app/landing/*.js',
       'client/app/results/*.js',
       'client/app/app.js',
-      'server/tests/landingTests.js'
+
+      'server/tests/**/*.js'
     ],
 
 
