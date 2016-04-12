@@ -50,7 +50,22 @@ describe('resultsController', function(){
         var controller = $controller('resultsController', {$scope: $scope});
         expect($scope.address).toBe('611 mission Street');
       });
-    })
+    });
+
+      describe('$scope.phone', function(){
+        it('should be a property on scope', function(){
+          var controller = $controller('resultsController', {$scope: $scope});
+          expect($scope.phone).toBeDefined();
+        });
+        it('should be a string', function(){
+          var controller = $controller('resultsController', {$scope: $scope});
+          expect(typeof($scope.phone)).toBe('string');
+        });
+        it('should be the proper number', function(){
+          var controller = $controller('resultsController', {$scope: $scope});
+          expect($scope.phone).toBe('1234567890')
+        });
+      });
 
 
 
