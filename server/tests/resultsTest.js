@@ -28,15 +28,32 @@ describe('resultsController', function(){
   var $scope = {};
 
   describe('$scope', function(){
-    
-    it('should be \'starbucks\'', function(){
-      var controller = $controller('resultsController', {$scope: $scope});
-      expect($scope.cafeName).toBe('starbucks');
-    });
+
+
+      it('should be \'starbucks\'', function(){
+        var controller = $controller('resultsController', {$scope: $scope});
+        expect($scope.cafeName).toBe('starbucks');
+      });
+
 
     it('should be five.', function(){
       var controller = $controller('resultsController', {$scope: $scope});
       expect($scope.max).toBe(5);
     });
+
+    describe('$scope.address', function(){
+      it('should be a property on scope', function(){
+        var controller = $controller('resultsController', {$scope: $scope});
+        expect($scope.address).toBeDefined();
+      });
+      it('should have the proper address', function(){
+        var controller = $controller('resultsController', {$scope: $scope});
+        expect($scope.address).toBe('611 mission Street');
+      });
+    })
+
+
+
+
   });
 });
